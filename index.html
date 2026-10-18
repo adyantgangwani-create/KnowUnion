@@ -1,73 +1,230 @@
 HTML
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome to KnowUnion</title>
+  <title>KnowUnion - The Free Encyclopedia</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: #f0f5ff;
-      color: #172554;
+      margin: 0;
+      background: #f3f6fb;
+      color: #222;
     }
     header {
-      background: #123b80;
+      background: #123b70;
       color: white;
-      padding: 30px 20px;
+      text-align: center;
+      padding: 28px 15px;
+    }
+    header h1 { margin: 0; font-size: 38px; }
+    header p { margin-bottom: 0; }
+    nav {
+      background: #09294f;
+      padding: 12px;
       text-align: center;
     }
-    nav {
-      background: #082653;
-      padding: 14px;
-      text-align: center;
+    nav a {
       color: white;
+      text-decoration: none;
+      margin: 8px;
+      display: inline-block;
     }
     main {
-      max-width: 800px;
-      margin: 30px auto;
-      padding: 25px;
-      background: white;
-      border-radius: 14px;
-      line-height: 1.7;
+      max-width: 900px;
+      margin: 22px auto;
+      padding: 0 15px;
     }
-    h2 { color: #174ea6; }
+    section {
+      background: white;
+      padding: 20px;
+      margin-bottom: 18px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #00000012;
+    }
+    h2 { color: #123b70; }
+    input {
+      box-sizing: border-box;
+      width: 100%;
+      padding: 13px;
+      border: 1px solid #aaa;
+      border-radius: 7px;
+      font-size: 16px;
+    }
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 12px;
+    }
+    .category {
+      background: #e8f0ff;
+      padding: 15px;
+      border-radius: 8px;
+      text-decoration: none;
+      color: #123b70;
+      font-weight: bold;
+    }
     footer {
       text-align: center;
-      padding: 20px;
-      color: #52627a;
+      background: #09294f;
+      color: white;
+      padding: 18px;
     }
+    .article { line-height: 1.6; }
   </style>
 </head>
 <body>
-  <header>
-    <h1>KnowUnion</h1>
-    <p>Knowledge connects us all.</p>
-  </header>
-  <nav>HOME | HISTORY | SCIENCE | GEOGRAPHY</nav>
-  <main>
+
+<header>
+  <h1>KnowUnion</h1>
+  <p>Discover knowledge. Explore the world.</p>
+</header>
+
+<nav>
+  <a href="#home">Home</a>
+  <a href="#categories">Categories</a>
+  <a href="#articles">Articles</a>
+  <a href="#about">About</a>
+</nav>
+
+<main>
+  <section id="home">
     <h2>Welcome to KnowUnion!</h2>
     <p>
-      Welcome to KnowUnion, a place for curious minds
-      to explore the amazing world of knowledge.
+      KnowUnion is a growing encyclopedia where curious minds
+      can explore history, science, geography, sports, technology,
+      famous people, and much more.
     </p>
+    <input id="search" type="search"
+      placeholder="Search articles..."
+      oninput="searchArticles()">
+    <p id="searchMessage"></p>
+  </section>
+
+  <section id="categories">
+    <h2>Explore Categories</h2>
+    <div class="categories">
+      <a class="category" href="#history">🏛️ History</a>
+      <a class="category" href="#science">🔬 Science</a>
+      <a class="category" href="#geography">🌍 Geography</a>
+      <a class="category" href="#sports">⚽ Sports</a>
+      <a class="category" href="#technology">💻 Technology</a>
+      <a class="category" href="#biographies">👤 Biographies</a>
+    </div>
+  </section>
+
+  <section id="articles">
+    <h2>Featured Articles</h2>
+
+    <div class="article" id="history">
+      <h3>History: The Indus Valley Civilization</h3>
+      <p>
+        The Indus Valley Civilization was one of the world's
+        earliest urban civilizations. Harappa and Mohenjo-daro
+        were two of its important cities.
+      </p>
+    </div>
+
+    <hr>
+
+    <div class="article" id="science">
+      <h3>Science: The Solar System</h3>
+      <p>
+        Our solar system consists of the Sun and the objects
+        that orbit it, including eight planets, moons, asteroids,
+        and comets.
+      </p>
+    </div>
+
+    <hr>
+
+    <div class="article" id="geography">
+      <h3>Geography: India</h3>
+      <p>
+        India is a country in South Asia. New Delhi is its capital,
+        and the country has many languages, landscapes, and cultures.
+      </p>
+    </div>
+
+    <hr>
+
+    <div class="article" id="sports">
+      <h3>Sports: Football</h3>
+      <p>
+        Football is a team sport played between two teams.
+        The aim is to score goals by getting the ball into
+        the opposing team's goal.
+      </p>
+    </div>
+
+    <hr>
+
+    <div class="article" id="technology">
+      <h3>Technology: Computers</h3>
+      <p>
+        Computers process information and help people learn,
+        communicate, create, and solve problems.
+      </p>
+    </div>
+
+    <hr>
+
+    <div class="article" id="biographies">
+      <h3>Biography: A Life Story</h3>
+      <p>
+        A biography describes a person's life, achievements,
+        experiences, and contributions to the world.
+      </p>
+    </div>
+  </section>
+
+  <section id="about">
+    <h2>About KnowUnion</h2>
     <p>
-      From fascinating history and exciting science to
-      geography and general knowledge, our goal is to
-      make learning interesting for everyone.
+      KnowUnion is a knowledge project designed to make learning
+      interesting and accessible. This is its beginning, and
+      more articles can be added over time.
     </p>
-    <h2>What will you discover?</h2>
-    <ul>
-      <li>History and great civilizations</li>
-      <li>Science and inventions</li>
-      <li>Countries, maps and geography</li>
-      <li>Interesting facts about our world</li>
-    </ul>
-    <p>Every great discovery begins with a question.
-       Start exploring with KnowUnion!</p>
-  </main>
-  <footer>© 2026 KnowUnion | Keep learning!</footer>
+    <p><strong>KnowUnion — Knowledge brings us together!</strong></p>
+  </section>
+</main>
+
+<footer>
+  <p>© 2026 KnowUnion | Explore. Learn. Discover.</p>
+</footer>
+
+<script>
+  function searchArticles() {
+    const query = document.getElementById("search")
+      .value.toLowerCase().trim();
+
+    const articles = document.querySelectorAll(
+      "#articles .article"
+    );
+
+    let matches = 0;
+
+    articles.forEach(function(article) {
+      const found = article.textContent
+        .toLowerCase().includes(query);
+
+      article.style.display = found ? "block" : "none";
+
+      if (found) matches++;
+    });
+
+    const message = document.getElementById("searchMessage");
+
+    if (query === "") {
+      message.textContent = "";
+    } else if (matches === 0) {
+      message.textContent = "No matching articles found yet.";
+    } else {
+      message.textContent = matches + " article(s) found.";
+    }
+  }
+</script>
+
 </body>
 </html>

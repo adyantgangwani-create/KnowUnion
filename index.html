@@ -4,15 +4,15 @@ HTML
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KnowUnion | Encyclopedia of Everything</title>
+<title>KnowUnion | The Encyclopedia</title>
 <style>
 *{box-sizing:border-box}
 body{margin:0;font-family:Arial,sans-serif;background:#f5f7fa;color:#202b3c}
-header{background:#153b65;color:white;padding:25px 7%;text-align:center}
+header{background:#153b65;color:white;padding:28px 15px;text-align:center}
 header h1{font-size:42px;margin:0}
 header p{margin:8px 0 0;color:#dce9fa}
 nav{background:#0d2947;padding:13px;text-align:center}
-nav a{color:white;text-decoration:none;margin:0 12px;display:inline-block;padding:5px}
+nav a{color:white;text-decoration:none;margin:8px;display:inline-block}
 nav a:hover{text-decoration:underline}
 main{max-width:1050px;margin:25px auto;padding:0 16px}
 .hero,section{background:white;padding:23px;margin-bottom:20px;border-radius:12px;box-shadow:0 3px 12px #152b4510}
@@ -20,15 +20,13 @@ main{max-width:1050px;margin:25px auto;padding:0 16px}
 h2{color:#153b65}
 .search{width:100%;padding:14px;border:1px solid #b9c5d3;border-radius:8px;font-size:16px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
-.card{border:1px solid #dce3ed;border-radius:9px;padding:16px;background:#fff}
+.card{border:1px solid #dce3ed;border-radius:9px;padding:16px}
 .card h3{margin-top:0;color:#153b65}
 .card a{color:#174f91;text-decoration:none;font-weight:bold}
-.card a:hover{text-decoration:underline}
-.tag{font-size:12px;color:#52647a;text-transform:uppercase;letter-spacing:1px}
-.article{line-height:1.7;padding:12px 0;border-bottom:1px solid #e1e7ef}
-.article:last-child{border:0}
-.article h3{margin-bottom:5px;color:#153b65}
-footer{background:#0d2947;color:white;text-align:center;padding:24px;margin-top:30px}
+.article{line-height:1.7;padding:14px 0;border-bottom:1px solid #e1e7ef}
+.article h3{color:#153b65;margin-bottom:5px}
+.tag{font-size:12px;color:#52647a}
+footer{background:#0d2947;color:white;text-align:center;padding:24px}
 small{color:#64748b}
 </style>
 </head>
@@ -48,80 +46,80 @@ small{color:#64748b}
 
 <main>
 <div class="hero" id="home">
-<h2>Welcome to KnowUnion</h2>
-<p>Your gateway to history, science, geography, sports and the stories that shaped our world.</p>
+<h2>Welcome to KnowUnion!</h2>
+<p>Your gateway to the history, science, people, and discoveries that shape our world.</p>
 <input class="search" id="search" type="search"
 placeholder="Search World War II, Roman Empire, science..."
 oninput="searchArticles()">
 <p id="message" aria-live="polite"></p>
-<small>Search the articles available on this page.</small>
+<small>Search the articles on this page.</small>
 </div>
 
 <section id="categories">
-<h2>Explore the Encyclopedia</h2>
+<h2>Explore Categories</h2>
 <div class="grid">
-<div class="card"><h3>🏛️ World History</h3><p>Ancient civilizations, empires, wars and revolutions.</p><a href="#world-history">Explore history →</a></div>
-<div class="card"><h3>🇮🇳 Indian History</h3><p>Ancient India, great empires and independence.</p><a href="#india">Explore India →</a></div>
-<div class="card"><h3>🔬 Science</h3><p>Discover space, nature, physics and inventions.</p><a href="#science">Explore science →</a></div>
-<div class="card"><h3>🌍 Geography</h3><p>Countries, capitals, continents and oceans.</p><a href="#geography">Explore geography →</a></div>
-<div class="card"><h3>👤 Biographies</h3><p>Learn about influential people and their lives.</p><a href="#people">Meet famous people →</a></div>
-<div class="card"><h3>⚽ Sports</h3><p>Football, cricket, chess and legendary athletes.</p><a href="#sports">Explore sports →</a></div>
-<div class="card"><h3>💻 Technology</h3><p>Computers, robotics, inventions and the internet.</p><a href="#technology">Explore technology →</a></div>
-<div class="card"><h3>📚 Literature</h3><p>Books, authors, languages and storytelling.</p><a href="#literature">Explore literature →</a></div>
+<div class="card"><h3>🏛️ World History</h3><p>Wars, empires and civilizations.</p><a href="#world-history">Explore →</a></div>
+<div class="card"><h3>🇮🇳 Indian History</h3><p>Ancient India and independence.</p><a href="#india">Explore →</a></div>
+<div class="card"><h3>🔬 Science</h3><p>Space, nature and discoveries.</p><a href="#science">Explore →</a></div>
+<div class="card"><h3>🌍 Geography</h3><p>Countries, capitals and oceans.</p><a href="#geography">Explore →</a></div>
+<div class="card"><h3>👤 Biographies</h3><p>People who changed the world.</p><a href="#people">Explore →</a></div>
+<div class="card"><h3>⚽ Sports</h3><p>Football, cricket and chess.</p><a href="#sports">Explore →</a></div>
+<div class="card"><h3>💻 Technology</h3><p>Computers, robots and inventions.</p><a href="#technology">Explore →</a></div>
+<div class="card"><h3>📚 Literature</h3><p>Books, authors and stories.</p><a href="#literature">Explore →</a></div>
 </div>
 </section>
 
 <section id="articles">
 <h2>Featured Articles</h2>
 
-<div class="article" id="ww1" data-search="world war i first world war 1914 1918 history">
+<div class="article" id="ww1" data-search="world war i first world war 1914 1918">
 <h3>World War I (1914–1918)</h3>
-<p>World War I was a major international conflict that began in 1914 and ended in 1918. Rival alliances, militarism, imperial competition and the assassination of Archduke Franz Ferdinand contributed to its outbreak. The war reshaped borders and societies around the world.</p>
+<p>World War I was a major international conflict that began in 1914 and ended in 1918. Rival alliances, militarism, imperial competition and the assassination of Archduke Franz Ferdinand contributed to its outbreak. The war changed borders and societies around the world.</p>
 </div>
 
 <div class="article" id="ww2" data-search="world war ii second world war 1939 1945 hitler holocaust allies axis">
 <h3>World War II (1939–1945)</h3>
-<p>World War II was a global conflict that began in 1939 when Nazi Germany invaded Poland. The Allies, including Britain, the Soviet Union, the United States and China, fought the Axis powers. The war included the Holocaust, in which Nazi Germany murdered six million Jews, as well as millions of other victims of Nazi persecution. It ended in 1945 and transformed the world.</p>
+<p>World War II began in 1939 when Nazi Germany invaded Poland. The Allies, including Britain, the Soviet Union, the United States and China, fought the Axis powers. The war included the Holocaust, in which Nazi Germany murdered six million Jews, as well as millions of other victims of Nazi persecution. The conflict ended in 1945 and transformed the world.</p>
 </div>
 
-<div class="article" id="world-history" data-search="ancient rome greece egypt civilizations world history">
+<div class="article" id="world-history" data-search="ancient rome greece egypt mesopotamia civilization">
 <h3>Ancient Civilizations</h3>
-<p>Ancient civilizations developed cities, systems of government, writing, trade and remarkable architecture. Ancient Egypt, Mesopotamia, Greece, Rome and the Indus Valley made lasting contributions to human history.</p>
+<p>Ancient Egypt, Mesopotamia, Greece, Rome and the Indus Valley developed cities, writing, trade, government and remarkable architecture. Their achievements influenced later societies.</p>
 </div>
 
-<div class="article" id="india" data-search="india maurya gupta empire independence gandhi history">
+<div class="article" id="india" data-search="india maurya gupta mughal independence gandhi">
 <h3>Indian History</h3>
-<p>The history of India includes the Indus Valley Civilization, the Maurya and Gupta empires, many regional kingdoms, the Mughal period and British rule. India became independent on 15 August 1947.</p>
+<p>Indian history includes the Indus Valley Civilization, the Maurya and Gupta empires, regional kingdoms, the Mughal period and British rule. India became independent on 15 August 1947.</p>
 </div>
 
 <div class="article" id="science" data-search="science solar system sun planets astronomy">
 <h3>The Solar System</h3>
-<p>The Solar System consists of the Sun and the objects held by its gravity, including eight planets, their moons, dwarf planets, asteroids and comets. Earth is the third planet from the Sun.</p>
+<p>The Solar System consists of the Sun and objects held by its gravity, including eight planets, moons, dwarf planets, asteroids and comets. Earth is the third planet from the Sun.</p>
 </div>
 
 <div class="article" id="geography" data-search="geography earth continents oceans countries capitals">
 <h3>Earth and Its Continents</h3>
-<p>Earth has seven commonly recognized continents and five commonly recognized oceans. Its landscapes include mountains, deserts, forests, plains and rivers, supporting a great variety of life.</p>
+<p>Earth has seven commonly recognized continents and five commonly recognized oceans. Its landscapes include mountains, deserts, forests, plains and rivers.</p>
 </div>
 
-<div class="article" id="people" data-search="biography mahatma gandhi abdul kalam scientists leaders">
-<h3>Biographies: Lives That Made History</h3>
-<p>A biography tells the story of a person's life, achievements and influence. Biographies help us understand the ideas, decisions and experiences of people from different times and places.</p>
+<div class="article" id="people" data-search="biography mahatma gandhi apj abdul kalam scientists leaders">
+<h3>Biographies</h3>
+<p>A biography describes a person's life, experiences, achievements and influence. Learning about historical figures helps us understand how people have shaped the world.</p>
 </div>
 
-<div class="article" id="sports" data-search="football soccer cristiano ronaldo sports chess cricket">
+<div class="article" id="sports" data-search="football soccer cristiano ronaldo fifa cricket chess">
 <h3>Football</h3>
-<p>Football, also called soccer in some countries, is played by two teams of eleven players. The aim is to score by getting the ball into the opposing team's goal. The FIFA World Cup is the sport's leading international tournament.</p>
+<p>Football, also called soccer in some countries, is played by two teams of eleven players. The FIFA World Cup is the leading international tournament in men's and women's football.</p>
 </div>
 
 <div class="article" id="technology" data-search="technology computers internet robotics inventions">
 <h3>Computers and Technology</h3>
-<p>Computers process information and help people communicate, learn, design and solve problems. Modern technology includes networks, robotics, artificial intelligence and digital tools.</p>
+<p>Computers process information and help people communicate, learn, create and solve problems. Modern technology includes robotics, artificial intelligence and the internet.</p>
 </div>
 
 <div class="article" id="literature" data-search="literature books authors poetry stories">
 <h3>Literature</h3>
-<p>Literature includes stories, novels, poetry, plays and other written works. It preserves ideas, explores human experiences and shares cultures across generations.</p>
+<p>Literature includes novels, short stories, poetry, plays and other written works. It shares ideas, explores human experiences and preserves cultures.</p>
 </div>
 
 <p id="noResults" hidden>No matching articles found. Try another keyword.</p>
@@ -129,9 +127,9 @@ oninput="searchArticles()">
 
 <section id="about">
 <h2>About KnowUnion</h2>
-<p>KnowUnion is a growing encyclopedia created to make learning about our world interesting and accessible. Our goal is to build a collection of clear, factual articles across many subjects.</p>
+<p>KnowUnion is an independent educational encyclopedia project. Our goal is to make knowledge accessible through clear articles covering many subjects.</p>
 <p><strong>Explore. Learn. Discover.</strong></p>
-<small>Educational summaries are starting points for learning. Check reliable historical and scientific sources for deeper research.</small>
+<small>These introductory summaries are starting points for learning and can be expanded with reliable sources.</small>
 </section>
 </main>
 

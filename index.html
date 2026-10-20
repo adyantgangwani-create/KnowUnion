@@ -1,467 +1,195 @@
-HTML
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KnowUnion | The Encyclopedia</title>
+<title>KnowUnion - Knowledge for Everyone</title>
 <style>
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;font-family:Arial,sans-serif;
-  background:#f3f6fb;color:#233044;line-height:1.65
-}
-header{
-  background:linear-gradient(135deg,#102d50,#2468a6);
-  color:white;text-align:center;padding:42px 16px
-}
-header h1{font-size:clamp(38px,8vw,58px);margin:0}
-header p{font-size:17px;color:#e0edff;margin:8px 0}
-nav{
-  background:#0b2038;padding:13px;text-align:center;
-  position:sticky;top:0;z-index:5
-}
-nav a{
-  color:white;text-decoration:none;display:inline-block;
-  margin:4px 9px;font-size:14px
-}
-nav a:hover{color:#8fd3ff}
-main{max-width:1100px;margin:25px auto;padding:0 16px}
-.hero,.section{
-  background:white;padding:25px;margin-bottom:22px;
-  border-radius:14px;box-shadow:0 4px 18px #19385b12
-}
-.hero{text-align:center}
-h2{color:#174b7b;margin-top:0}
-.search{
-  width:100%;padding:15px;border:2px solid #d6e0ec;
-  border-radius:10px;font-size:16px;margin-top:15px
-}
-.search:focus{outline:2px solid #418bd0}
-.grid{
-  display:grid;grid-template-columns:
-  repeat(auto-fit,minmax(230px,1fr));gap:16px
-}
-.card{
-  border:1px solid #dce5ef;border-radius:12px;
-  padding:18px;background:#fff;transition:.2s
-}
-.card:hover{transform:translateY(-3px);box-shadow:0 6px 18px #173b6018}
-.card h3{margin:0 0 6px;color:#174b7b}
-.tag{font-size:12px;font-weight:bold;color:#3977a8}
-.card p{margin:10px 0}
-.card button,.clear{
-  background:#174b7b;color:white;border:0;
-  padding:10px 14px;border-radius:7px;cursor:pointer;
-  font-size:14px
-}
-.card button:hover,.clear:hover{background:#2468a6}
-.article-body{
-  background:#f5f8fc;border-radius:10px;padding:14px;
-  margin-top:12px;white-space:normal
-}
-.article-body h4{color:#174b7b;margin-bottom:4px}
-.article[hidden]{display:none}
-.empty{padding:20px;text-align:center;color:#63748a}
-footer{
-  background:#0b2038;color:white;text-align:center;
-  padding:28px 15px;margin-top:35px
-}
-footer p{margin:5px}
+body{margin:0;font-family:Arial,sans-serif;background:#f2f6fc;color:#182744;line-height:1.6}
+header{background:linear-gradient(135deg,#142e59,#3976e8);color:white;padding:25px 5% 35px}
+nav,main{max-width:1050px;margin:auto}
+nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+.logo{font-size:27px;font-weight:bold}.logo span{color:#ffdc79}
+.hero{text-align:center;margin:35px auto 0;max-width:700px}
+.hero h1{font-size:clamp(30px,6vw,48px);line-height:1.2}
+.search{display:flex;gap:8px;margin:22px auto}
+input{font:inherit}
+#q{flex:1;min-width:0;padding:14px;border:0;border-radius:9px}
+button{font:inherit;font-weight:bold;border:0;border-radius:9px;padding:11px 14px;cursor:pointer}
+#searchBtn{background:#ffdc79;color:#182744}
+main{width:92%;padding:28px 0 50px}
+.categories{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 25px}
+.category{background:white;color:#173b75;border:1px solid #d8e2f1;border-radius:25px}
+.category.active{background:#173b75;color:white}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:15px}
+.card,.panel{background:white;border:1px solid #e0e7f1;border-radius:14px;padding:18px}
+.card .emoji{font-size:30px}
+.card h3{margin:6px 0}.muted{color:#65738a;font-size:14px}
+.card p{color:#596a83}
+.card button,.primary{background:#3269d8;color:white}
+.panel{margin-top:25px}
+.hidden{display:none!important}
+.result{border:1px solid #e0e7f1;border-radius:10px;padding:14px;margin:12px 0}
+.result button{background:#e8efff;color:#173b75}
+a{color:#245cc5;overflow-wrap:anywhere}
+.notice{background:#e9f0ff;padding:12px;border-radius:9px}
+footer{text-align:center;background:#e4ebf6;padding:24px}
+@media(max-width:480px){.search{flex-direction:column}}
 </style>
 </head>
 <body>
-
 <header>
-  <h1>KnowUnion</h1>
-  <p>Knowledge Without Boundaries</p>
-  <p>Your gateway to history, science, geography and the world.</p>
+<nav><div class="logo">Know<span>Union</span> 🌍</div><div>Knowledge for Everyone</div></nav>
+<div class="hero">
+<h1>Explore the World of Knowledge</h1>
+<p>Discover history, science, inspiring people, India, and sports.</p>
+<form class="search" id="searchForm">
+<input id="q" type="search" placeholder="Search Einstein, India, football..." required>
+<button id="searchBtn">Search 🔎</button>
+</form>
+<p>Learn something new every day!</p>
+</div>
 </header>
-
-<nav>
-  <a href="#home">Home</a>
-  <a href="#famous">Famous People</a>
-  <a href="#history">History</a>
-  <a href="#science">Science</a>
-  <a href="#geography">Geography</a>
-  <a href="#sports">Sports</a>
-</nav>
-
 <main>
-  <section class="hero" id="home">
-    <h2>Welcome to KnowUnion!</h2>
-    <p>Explore remarkable people, great discoveries,
-    important events and fascinating places.</p>
-    <input class="search" id="search"
-      type="search" placeholder="Search articles, people or topics..."
-      aria-label="Search encyclopedia articles">
-    <p id="count" aria-live="polite">Explore our encyclopedia below.</p>
-    <button class="clear" id="clear" hidden>Clear search</button>
-  </section>
-
-  <section class="section" id="famous">
-    <h2>🌟 Famous People</h2>
-    <p>Discover the lives and achievements of influential people.</p>
-    <div class="grid">
-
-      <article class="card article">
-        <span class="tag">SCIENCE</span>
-        <h3>Stephen Hawking</h3>
-        <p>A physicist who explored black holes and the mysteries of the universe.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          <h4>Early Life</h4>
-          Stephen Hawking was born in Oxford, England, in 1942.
-          He became one of the world's best-known theoretical physicists.
-          <h4>Scientific Work</h4>
-          He studied black holes, cosmology and the origins of the universe.
-          His work helped scientists understand how black holes might emit
-          radiation, now called Hawking radiation.
-          <h4>Books and Legacy</h4>
-          His popular book <em>A Brief History of Time</em> introduced
-          complex ideas about the universe to millions of readers.
-          He died in 2018, but his scientific contributions continue to inspire.
-        </div>
-      </article>
-
-      <article class="card article">
-        <span class="tag">WORLD HISTORY</span>
-        <h3>Adolf Hitler</h3>
-        <p>The dictator whose Nazi regime brought devastation to Europe.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          <h4>Rise to Power</h4>
-          Adolf Hitler was born in Austria in 1889. He became leader
-          of the Nazi Party and was appointed chancellor of Germany in 1933.
-          He destroyed democratic institutions and established a dictatorship.
-          <h4>World War II and Nazi Crimes</h4>
-          Nazi Germany invaded Poland in September 1939, beginning
-          World War II in Europe. Hitler's regime promoted racist,
-          antisemitic ideology and carried out the Holocaust, in which
-          six million Jewish people were murdered, alongside the persecution
-          and mass murder of millions of other victims.
-          <h4>Defeat</h4>
-          Germany was defeated in 1945. Hitler died in Berlin that year.
-          His dictatorship demonstrates the terrible consequences of
-          hatred, racism, propaganda and unchecked power.
-        </div>
-      </article>
-
-      <article class="card article">
-        <span class="tag">SCIENCE</span>
-        <h3>Albert Einstein</h3>
-        <p>The physicist who transformed our understanding of space and time.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          Born in Germany in 1879, Albert Einstein developed the theory
-          of relativity. His famous equation, E = mc², describes a
-          relationship between mass and energy. He received the 1921
-          Nobel Prize in Physics for his explanation of the photoelectric
-          effect. He became one of the most influential scientists in history.
-        </div>
-      </article>
-
-      <article class="card article">
-        <span class="tag">INDIAN HISTORY</span>
-        <h3>Bhagat Singh</h3>
-        <p>A revolutionary remembered in India's independence movement.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          Bhagat Singh was born in 1907 in Punjab. He opposed British
-          colonial rule and became involved in revolutionary activities
-          for Indian independence. He was executed by the British
-          colonial government in 1931, aged 23. He remains an important
-          figure in India's history and is remembered for his courage,
-          political ideas and commitment to independence.
-        </div>
-      </article>
-
-      <article class="card article">
-        <span class="tag">WORLD HISTORY</span>
-        <h3>Napoleon Bonaparte</h3>
-        <p>The French military leader who became emperor.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          Napoleon rose to prominence during the French Revolution and
-          became emperor of France in 1804. His armies reshaped Europe,
-          while his legal reforms, including the Napoleonic Code,
-          influenced many countries. After military defeats, he was
-          exiled and died in 1821.
-        </div>
-      </article>
-
-      <article class="card article">
-        <span class="tag">INDIAN HISTORY</span>
-        <h3>A. P. J. Abdul Kalam</h3>
-        <p>The scientist who became India's eleventh president.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          Avul Pakir Jainulabdeen Abdul Kalam was born in Rameswaram
-          in 1931. An aerospace scientist, he contributed to India's
-          space and missile programmes. He served as president from
-          2002 to 2007 and inspired many students to pursue science,
-          education and public service. He died in 2015.
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <section class="section" id="history">
-    <h2>📜 World and Indian History</h2>
-    <div class="grid">
-
-      <article class="card article">
-        <span class="tag">WORLD HISTORY</span>
-        <h3>World War I</h3>
-        <p>The global conflict that lasted from 1914 to 1918.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          World War I began in 1914 after the assassination of Archduke
-          Franz Ferdinand. Alliances, militarism, nationalism and
-          imperial rivalries contributed to the conflict. The Central
-          Powers fought the Allied Powers. Trench warfare caused immense
-          suffering, and the armistice of 11 November 1918 ended the
-          fighting. The war changed borders and helped shape later events.
-        </div>
-      </article>
-
-      <article class="card article">
-        <span class="tag">WORLD HISTORY</span>
-        <h3>World War II</h3>
-        <p>A worldwide conflict fought from 1939 to 1945.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          World War II began in Europe when Nazi Germany invaded Poland
-          in 1939. The Allies eventually included Britain, the Soviet
-          Union, the United States, China and other nations. The war
-          involved battles across Europe, Africa, Asia and the Pacific.
-          The Holocaust was the systematic murder of six million Jews
-          by Nazi Germany and its collaborators. The war ended in 1945
-          after Germany's surrender in May and Japan's surrender in August.
-        </div>
-      </article>
-
-      <article class="card article">
-        <span class="tag">ANCIENT HISTORY</span>
-        <h3>Ancient Egypt</h3>
-        <p>A civilisation known for pyramids, pharaohs and hieroglyphs.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          Ancient Egyptian civilisation developed along the Nile River.
-          The river supported farming, trade and large settlements.
-          Egyptian rulers were called pharaohs. Egyptians built pyramids,
-          developed hieroglyphic writing and made advances in mathematics,
-          medicine and architecture.
-        </div>
-      </article>
-
-      <article class="card article">
-        <span class="tag">INDIAN HISTORY</span>
-        <h3>The Maurya Empire</h3>
-        <p>One of the largest empires in ancient Indian history.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          Chandragupta Maurya founded the Maurya Empire around 322 BCE.
-          Under Emperor Ashoka, the empire expanded across much of the
-          Indian subcontinent. After the Kalinga War, Ashoka promoted
-          Buddhist teachings, non-violence and public welfare.
-          The empire made important contributions to Indian political history.
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <section class="section" id="science">
-    <h2>🔬 Science and Space</h2>
-    <div class="grid">
-
-      <article class="card article">
-        <span class="tag">ASTRONOMY</span>
-        <h3>The Solar System</h3>
-        <p>Discover our Sun, eight planets and many smaller worlds.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          The Solar System formed about 4.6 billion years ago.
-          It includes the Sun, eight planets, dwarf planets, moons,
-          asteroids and comets. Earth is the third planet from the Sun
-          and the only world currently known to support life.
-        </div>
-      </article>
-
-      <article class="card article">
-        <span class="tag">PHYSICS</span>
-        <h3>Black Holes</h3>
-        <p>Explore regions of space with gravity so strong that light cannot escape.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          A black hole forms when matter becomes concentrated enough
-          for gravity to prevent light from escaping beyond its event
-          horizon. Scientists study black holes using their effects
-          on nearby matter and light. Some form when massive stars collapse.
-        </div>
-      </article>
-
-      <article class="card article">
-        <span class="tag">TECHNOLOGY</span>
-        <h3>Artificial Intelligence</h3>
-        <p>How computers perform tasks that usually require human intelligence.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          Artificial intelligence, or AI, is a field of computing
-          focused on systems that can recognise patterns, understand
-          language, make predictions and solve problems. AI is used
-          in medicine, education, research and many other areas.
-          Responsible development includes attention to safety, privacy
-          and fairness.
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <section class="section" id="geography">
-    <h2>🌍 Geography</h2>
-    <div class="grid">
-
-      <article class="card article">
-        <span class="tag">GEOGRAPHY</span>
-        <h3>Our Planet Earth</h3>
-        <p>Explore continents, oceans, climates and landforms.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          Earth is the third planet from the Sun. Its surface contains
-          seven commonly recognised continents and five major oceans.
-          Mountains, rivers, deserts, forests and grasslands create
-          a wide range of environments. Earth's atmosphere and liquid
-          water help make life possible.
-        </div>
-      </article>
-
-      <article class="card article">
-        <span class="tag">INDIA</span>
-        <h3>Geography of India</h3>
-        <p>From the Himalayas to the Indian Ocean.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          India is a country in South Asia. Its geography includes
-          the Himalayas, the Indo-Gangetic plains, the Thar Desert,
-          the Deccan Plateau and long coastlines. The Ganga and
-          Brahmaputra are among its major river systems. India also
-          has diverse climates, languages and ecosystems.
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <section class="section" id="sports">
-    <h2>⚽ Sports Legends</h2>
-    <div class="grid">
-
-      <article class="card article">
-        <span class="tag">FOOTBALL</span>
-        <h3>Cristiano Ronaldo</h3>
-        <p>A Portuguese footballer renowned for goalscoring and athleticism.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          Cristiano Ronaldo was born in Madeira, Portugal, in 1985.
-          He became a global football star after playing for clubs
-          including Manchester United, Real Madrid and Juventus.
-          He has won major club trophies and the UEFA European
-          Championship with Portugal. He is widely recognised for
-          his dedication, speed and remarkable goalscoring record.
-        </div>
-      </article>
-
-      <article class="card article">
-        <span class="tag">FOOTBALL</span>
-        <h3>Lionel Messi</h3>
-        <p>An Argentine footballer celebrated for his creativity and skill.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          Lionel Messi was born in Rosario, Argentina, in 1987.
-          He rose to fame at Barcelona and later played for Paris
-          Saint-Germain and Inter Miami. Messi captained Argentina
-          to victory at the 2022 FIFA World Cup. He is known for
-          his close control, passing, dribbling and playmaking.
-        </div>
-      </article>
-
-      <article class="card article">
-        <span class="tag">CRICKET</span>
-        <h3>Sachin Tendulkar</h3>
-        <p>One of the most celebrated batters in cricket history.</p>
-        <button class="read">Read article</button>
-        <div class="article-body" hidden>
-          Sachin Tendulkar was born in Mumbai in 1973. He made his
-          international cricket debut as a teenager and played for
-          India for more than two decades. He was a key member of
-          India's 2011 Cricket World Cup-winning team and is admired
-          for his technique and achievements.
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <section class="section">
-    <h2>📚 More Topics Coming Soon</h2>
-    <p>Literature • Mathematics • Inventions • Environment •
-    World Leaders • Ancient Civilisations • Famous Books •
-    Football History • Space Exploration • Indian Freedom Movement</p>
-    <p><strong>KnowUnion:</strong> Keep asking questions. Keep discovering.</p>
-  </section>
+<h2>Explore Categories</h2>
+<div class="categories" id="categories">
+<button class="category active" data-cat="All">All Topics</button>
+<button class="category" data-cat="History">🏛️ History</button>
+<button class="category" data-cat="Science">🔬 Science</button>
+<button class="category" data-cat="People">👤 People</button>
+<button class="category" data-cat="Sports">⚽ Sports</button>
+<button class="category" data-cat="India">🇮🇳 India</button>
+</div>
+<h2>KnowUnion Originals</h2>
+<p class="muted">Articles stored directly in this website.</p>
+<div class="grid" id="grid"></div>
+<section class="panel hidden" id="articlePanel">
+<button id="back">← Back to articles</button>
+<div id="article"></div>
+</section>
+<section class="panel hidden" id="searchPanel">
+<h2>🌐 Wikipedia Search</h2>
+<div id="results"></div>
+</section>
+<section class="panel">
+<h2>About KnowUnion</h2>
+<p>KnowUnion is a growing encyclopedia for curious people of all ages. Explore original articles and discover more through external references.</p>
+<p class="notice">Original articles are stored in this file. Wikipedia search requires an internet connection.</p>
+</section>
 </main>
-
-<footer>
-  <p><strong>KnowUnion</strong></p>
-  <p>Knowledge Without Boundaries</p>
-  <p>Educational encyclopedia project</p>
-</footer>
-
+<footer><strong>KnowUnion 🌍</strong><p>Knowledge belongs to everyone.</p></footer>
 <script>
-const search = document.getElementById("search");
-const articles = [...document.querySelectorAll(".article")];
-const count = document.getElementById("count");
-const clear = document.getElementById("clear");
-
-function filterArticles() {
-  const query = search.value.trim().toLowerCase();
-  let visible = 0;
-
-  articles.forEach(article => {
-    const matches = article.textContent.toLowerCase().includes(query);
-    article.hidden = !matches;
-    if (matches) visible++;
-  });
-
-  count.textContent = query
-    ? visible + " article(s) found."
-    : "Explore our encyclopedia below.";
-
-  clear.hidden = !query;
+const articles=[
+{title:"Bhagat Singh",cat:"History",emoji:"🇮🇳",summary:"A revolutionary of India's independence movement.",sections:[
+["Early life","Bhagat Singh was born on 28 September 1907 in Banga, in the Punjab region of British India. His family supported the movement against colonial rule."],
+["The freedom struggle","Events such as the Jallianwala Bagh massacre shaped his generation. Singh joined revolutionary groups and read widely about politics and social change."],
+["Revolutionary activities","In 1929, Singh and Batukeshwar Dutt threw bombs in the Central Legislative Assembly as a protest. They stayed to be arrested and used their trial to publicize their ideas."],
+["Legacy","Bhagat Singh was executed by the British colonial government on 23 March 1931 alongside Rajguru and Sukhdev. He remains a well-known figure in India's freedom struggle."]]},
+{title:"Rash Behari Bose",cat:"History",emoji:"📜",summary:"A revolutionary who helped organize India's independence movement overseas.",sections:[
+["Early life","Rash Behari Bose was born in Bengal in 1886 and became involved in revolutionary opposition to British rule."],
+["Revolutionary work","He was connected to the 1912 attempt to attack Viceroy Lord Hardinge in Delhi. Pursued by British authorities, he escaped to Japan in 1915."],
+["Work in Japan","Bose built connections among Indian nationalists in East Asia and helped develop the Indian Independence League."],
+["The INA","He helped lay the groundwork for the Indian National Army movement and later handed leadership to Subhas Chandra Bose."],
+["Legacy","Rash Behari Bose died in Japan in 1945. He is remembered for his international efforts for Indian independence."]]},
+{title:"Ratan Tata",cat:"People",emoji:"🏢",summary:"An Indian business leader and philanthropist.",sections:[
+["Early life","Ratan Naval Tata was born in Bombay, now Mumbai, on 28 December 1937. He studied architecture and structural engineering at Cornell University."],
+["Business leadership","He became chairman of Tata Sons in 1991. Tata companies expanded internationally during his leadership, including through major acquisitions."],
+["Innovation","The Tata Nano was developed as an effort to make car ownership more affordable. Tata also supported technology and manufacturing."],
+["Giving back","Tata-linked charitable trusts supported education, health, scientific research and community development."],
+["Legacy","Ratan Tata died in Mumbai on 9 October 2024. He is remembered for his business leadership and philanthropy."]]},
+{title:"Albert Einstein",cat:"Science",emoji:"🧠",summary:"A physicist whose theory of relativity transformed modern physics.",sections:[
+["Early life","Albert Einstein was born in Ulm, Germany, in 1879. He developed a strong interest in mathematics and the natural world."],
+["Scientific breakthroughs","In 1905, Einstein published influential scientific papers. His work on the photoelectric effect helped develop quantum theory, and his theory of relativity changed physics."],
+["E = mc²","This famous equation expresses a relationship between mass and energy."],
+["Later life","Einstein received the 1921 Nobel Prize in Physics for his explanation of the photoelectric effect. He later settled in the United States."],
+["Legacy","Einstein died in 1955. His work continues to influence physics and astronomy."]]},
+{title:"Planet Earth",cat:"Science",emoji:"🌎",summary:"Our home planet, with oceans, an atmosphere and diverse life.",sections:[
+["Our planet","Earth is the third planet from the Sun. It formed about 4.54 billion years ago and is the only planet currently known to support life."],
+["Land, oceans and air","Most of Earth's surface is covered by water. Its atmosphere contains mostly nitrogen and oxygen."],
+["Inside Earth","Earth has a crust, mantle and core. Heat inside the planet helps drive the movement of tectonic plates."],
+["Protecting our home","Pollution, habitat destruction and climate change affect ecosystems. Conserving resources and protecting habitats can help."]]},
+{title:"The Game of Football",cat:"Sports",emoji:"⚽",summary:"A global team sport played by millions.",sections:[
+["How it works","Association football is usually played by two teams of eleven players. The aim is to score by getting the ball into the opposing team's goal."],
+["The rules","A standard match lasts 90 minutes, divided into two halves. The referee enforces rules such as fouls, offside and penalties."],
+["A global game","Football is played at school, community and professional levels around the world. The FIFA World Cup is a major international competition."],
+["Skills and teamwork","Passing, dribbling, shooting, defending and communication are important skills. Practice and fair play help teams improve."]]},
+{title:"Subhas Chandra Bose",cat:"History",emoji:"🕊️",summary:"An important leader in India's independence movement.",sections:[
+["Early life","Subhas Chandra Bose was born on 23 January 1897 in Cuttack, in British India."],
+["Political leadership","Bose was elected president of the Indian National Congress in 1938 and 1939. He differed with other leaders over strategy."],
+["The Indian National Army","During the Second World War, Bose led the Indian National Army, seeking to end British rule."],
+["Legacy","Bose remains an influential independence leader. His wartime alliances and strategies continue to be studied by historians."]]},
+{title:"The Solar System",cat:"Science",emoji:"🪐",summary:"The Sun and the planets, moons and other objects held by its gravity.",sections:[
+["The Sun","The Sun is a star at the center of our solar system. Its gravity keeps the planets in orbit."],
+["Eight planets","From the Sun, the planets are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune."],
+["Other objects","The solar system also includes dwarf planets, asteroids, comets and moons."],
+["Exploration","Robotic spacecraft and telescopes help scientists study planets and distant regions of the solar system."]]}
+];
+const grid=document.getElementById("grid");
+const searchInput=document.getElementById("q");
+let active="All";
+function render(){
+ const term=searchInput.value.trim().toLowerCase();
+ const found=articles.filter(a=>(active==="All"||a.cat===active||(active==="India"&&/india|indian|bose|bhagat|tata/i.test(a.title)))&&(!term||(a.title+" "+a.summary+" "+a.sections.flat().join(" ")).toLowerCase().includes(term)));
+ grid.innerHTML="";
+ if(!found.length){grid.textContent="No matching original articles. Try Wikipedia search above.";return}
+ found.forEach(a=>{
+  const c=document.createElement("article");c.className="card";
+  const e=document.createElement("div");e.className="emoji";e.textContent=a.emoji;
+  const h=document.createElement("h3");h.textContent=a.title;
+  const tag=document.createElement("p");tag.className="muted";tag.textContent=a.cat;
+  const p=document.createElement("p");p.textContent=a.summary;
+  const b=document.createElement("button");b.textContent="Read article →";b.onclick=()=>openArticle(a);
+  c.append(e,h,tag,p,b);grid.append(c);
+ });
 }
-
-search.addEventListener("input", filterArticles);
-
-clear.addEventListener("click", () => {
-  search.value = "";
-  filterArticles();
-  search.focus();
-});
-
-document.querySelectorAll(".read").forEach(button => {
-  button.addEventListener("click", () => {
-    const body = button.nextElementSibling;
-    const opening = body.hidden;
-    body.hidden = !opening;
-    button.textContent = opening ? "Close article" : "Read article";
+function openArticle(a){
+ document.getElementById("searchPanel").classList.add("hidden");
+ document.getElementById("articlePanel").classList.remove("hidden");
+ const box=document.getElementById("article");box.innerHTML="";
+ const h=document.createElement("h2");h.textContent=a.emoji+" "+a.title;box.append(h);
+ const m=document.createElement("p");m.className="muted";m.textContent="KnowUnion Original • "+a.cat;box.append(m);
+ a.sections.forEach(s=>{const sh=document.createElement("h3");sh.textContent=s[0];const p=document.createElement("p");p.textContent=s[1];box.append(sh,p)});
+ const link=document.createElement("a");link.href="https://en.wikipedia.org/wiki/"+encodeURIComponent(a.title.replace(/ /g,"_"));link.target="_blank";link.rel="noopener noreferrer";link.textContent="Read more on Wikipedia ↗";box.append(link);
+ document.getElementById("articlePanel").scrollIntoView({behavior:"smooth"});
+}
+document.getElementById("back").onclick=()=>document.getElementById("articlePanel").classList.add("hidden");
+document.getElementById("categories").onclick=e=>{
+ const b=e.target.closest("[data-cat]");if(!b)return;
+ active=b.dataset.cat;
+ document.querySelectorAll(".category").forEach(x=>x.classList.toggle("active",x===b));render();
+};
+searchInput.addEventListener("input",render);
+document.getElementById("searchForm").onsubmit=async e=>{
+ e.preventDefault();
+ const q=searchInput.value.trim();if(!q)return;
+ document.getElementById("articlePanel").classList.add("hidden");
+ const panel=document.getElementById("searchPanel");
+ const results=document.getElementById("results");
+ panel.classList.remove("hidden");results.textContent="Searching Wikipedia…";
+ panel.scrollIntoView({behavior:"smooth"});
+ try{
+  const url="https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch="+encodeURIComponent(q)+"&srlimit=8&format=json&origin=*";
+  const res=await fetch(url);if(!res.ok)throw Error();
+  const data=await res.json();results.innerHTML="";
+  const items=data.query.search;
+  if(!items.length){results.textContent="No results found.";return}
+  items.forEach(item=>{
+   const div=document.createElement("div");div.className="result";
+   const h=document.createElement("h3");h.textContent=item.title;
+   const p=document.createElement("p");p.textContent=item.snippet.replace(/<[^>]*>/g,"").replace(/&quot;/g,'"').replace(/&amp;/g,"&");
+   const a=document.createElement("a");a.href="https://en.wikipedia.org/wiki/"+encodeURIComponent(item.title.replace(/ /g,"_"));a.target="_blank";a.rel="noopener noreferrer";a.textContent="Open full Wikipedia article ↗";
+   div.append(h,p,a);results.append(div);
   });
-});
+ }catch(err){
+  results.innerHTML="";
+  const p=document.createElement("p");p.textContent="Search could not load. Check your internet connection.";
+  const a=document.createElement("a");a.href="https://en.wikipedia.org/w/index.php?search="+encodeURIComponent(q);a.target="_blank";a.rel="noopener noreferrer";a.textContent="Search Wikipedia directly ↗";
+  results.append(p,a);
+ }
+};
+render();
 </script>
-
 </body>
-        </html>
+</html>

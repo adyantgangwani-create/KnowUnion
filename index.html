@@ -1,195 +1,143 @@
+HTML
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>KnowUnion - Knowledge for Everyone</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KnowUnion</title>
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:Arial,sans-serif;background:#f2f6fc;color:#182744;line-height:1.6}
-header{background:linear-gradient(135deg,#142e59,#3976e8);color:white;padding:25px 5% 35px}
-nav,main{max-width:1050px;margin:auto}
-nav{display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
-.logo{font-size:27px;font-weight:bold}.logo span{color:#ffdc79}
-.hero{text-align:center;margin:35px auto 0;max-width:700px}
-.hero h1{font-size:clamp(30px,6vw,48px);line-height:1.2}
-.search{display:flex;gap:8px;margin:22px auto}
-input{font:inherit}
-#q{flex:1;min-width:0;padding:14px;border:0;border-radius:9px}
-button{font:inherit;font-weight:bold;border:0;border-radius:9px;padding:11px 14px;cursor:pointer}
-#searchBtn{background:#ffdc79;color:#182744}
-main{width:92%;padding:28px 0 50px}
-.categories{display:flex;flex-wrap:wrap;gap:8px;margin:14px 0 25px}
-.category{background:white;color:#173b75;border:1px solid #d8e2f1;border-radius:25px}
-.category.active{background:#173b75;color:white}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:15px}
-.card,.panel{background:white;border:1px solid #e0e7f1;border-radius:14px;padding:18px}
-.card .emoji{font-size:30px}
-.card h3{margin:6px 0}.muted{color:#65738a;font-size:14px}
-.card p{color:#596a83}
-.card button,.primary{background:#3269d8;color:white}
-.panel{margin-top:25px}
-.hidden{display:none!important}
-.result{border:1px solid #e0e7f1;border-radius:10px;padding:14px;margin:12px 0}
-.result button{background:#e8efff;color:#173b75}
-a{color:#245cc5;overflow-wrap:anywhere}
-.notice{background:#e9f0ff;padding:12px;border-radius:9px}
-footer{text-align:center;background:#e4ebf6;padding:24px}
-@media(max-width:480px){.search{flex-direction:column}}
+body{margin:0;font-family:Arial,sans-serif;background:#f1f5fb;color:#172746}
+header{background:#123775;color:white;text-align:center;padding:30px 15px}
+h1{font-size:34px}
+form{display:flex;gap:8px;max-width:650px;margin:20px auto}
+input{flex:1;min-width:0;padding:14px;border:0;border-radius:8px;font-size:16px}
+button{padding:12px;border:0;border-radius:8px;cursor:pointer;font-weight:bold}
+form button{background:#ffda68}
+main{max-width:900px;margin:25px auto;padding:0 15px}
+#results{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.card,#reader{background:white;padding:18px;border-radius:12px;margin-bottom:12px}
+.card p{color:#56657b;line-height:1.5}
+.read{background:#2464c5;color:white}
+#reader{display:none;line-height:1.8;overflow-wrap:anywhere}
+#article img{max-width:100%;height:auto}
+#article table{display:block;overflow-x:auto;max-width:100%}
+a{color:#1558ad}
+.back{background:#e3edff}
+footer{text-align:center;padding:20px;color:#667}
 </style>
 </head>
 <body>
 <header>
-<nav><div class="logo">Know<span>Union</span> 🌍</div><div>Knowledge for Everyone</div></nav>
-<div class="hero">
-<h1>Explore the World of Knowledge</h1>
-<p>Discover history, science, inspiring people, India, and sports.</p>
-<form class="search" id="searchForm">
-<input id="q" type="search" placeholder="Search Einstein, India, football..." required>
-<button id="searchBtn">Search 🔎</button>
+<h1>🌍 KnowUnion</h1>
+<p>Search. Discover. Enjoy Reading.</p>
+<form id="form">
+<input id="q" placeholder="Search any topic..." required>
+<button>Search</button>
 </form>
-<p>Learn something new every day!</p>
-</div>
 </header>
 <main>
-<h2>Explore Categories</h2>
-<div class="categories" id="categories">
-<button class="category active" data-cat="All">All Topics</button>
-<button class="category" data-cat="History">🏛️ History</button>
-<button class="category" data-cat="Science">🔬 Science</button>
-<button class="category" data-cat="People">👤 People</button>
-<button class="category" data-cat="Sports">⚽ Sports</button>
-<button class="category" data-cat="India">🇮🇳 India</button>
-</div>
-<h2>KnowUnion Originals</h2>
-<p class="muted">Articles stored directly in this website.</p>
-<div class="grid" id="grid"></div>
-<section class="panel hidden" id="articlePanel">
-<button id="back">← Back to articles</button>
-<div id="article"></div>
-</section>
-<section class="panel hidden" id="searchPanel">
-<h2>🌐 Wikipedia Search</h2>
+<section id="home">
+<h2>Your world of knowledge!</h2>
+<p>Discover history, science, people, countries, sports, and much more.</p>
+<p id="status">Type a topic above to begin.</p>
 <div id="results"></div>
 </section>
-<section class="panel">
-<h2>About KnowUnion</h2>
-<p>KnowUnion is a growing encyclopedia for curious people of all ages. Explore original articles and discover more through external references.</p>
-<p class="notice">Original articles are stored in this file. Wikipedia search requires an internet connection.</p>
+<section id="reader">
+<button class="back" id="back">← Back to results</button>
+<h1 id="heading"></h1>
+<div id="article">Loading...</div>
+<hr>
+<p>Article source: Wikipedia contributors. See Wikipedia for licensing and attribution details.</p>
+<a id="original" target="_blank" rel="noopener">Read original article</a>
 </section>
 </main>
-<footer><strong>KnowUnion 🌍</strong><p>Knowledge belongs to everyone.</p></footer>
+<footer>KnowUnion — Knowledge for Everyone 🌎</footer>
 <script>
-const articles=[
-{title:"Bhagat Singh",cat:"History",emoji:"🇮🇳",summary:"A revolutionary of India's independence movement.",sections:[
-["Early life","Bhagat Singh was born on 28 September 1907 in Banga, in the Punjab region of British India. His family supported the movement against colonial rule."],
-["The freedom struggle","Events such as the Jallianwala Bagh massacre shaped his generation. Singh joined revolutionary groups and read widely about politics and social change."],
-["Revolutionary activities","In 1929, Singh and Batukeshwar Dutt threw bombs in the Central Legislative Assembly as a protest. They stayed to be arrested and used their trial to publicize their ideas."],
-["Legacy","Bhagat Singh was executed by the British colonial government on 23 March 1931 alongside Rajguru and Sukhdev. He remains a well-known figure in India's freedom struggle."]]},
-{title:"Rash Behari Bose",cat:"History",emoji:"📜",summary:"A revolutionary who helped organize India's independence movement overseas.",sections:[
-["Early life","Rash Behari Bose was born in Bengal in 1886 and became involved in revolutionary opposition to British rule."],
-["Revolutionary work","He was connected to the 1912 attempt to attack Viceroy Lord Hardinge in Delhi. Pursued by British authorities, he escaped to Japan in 1915."],
-["Work in Japan","Bose built connections among Indian nationalists in East Asia and helped develop the Indian Independence League."],
-["The INA","He helped lay the groundwork for the Indian National Army movement and later handed leadership to Subhas Chandra Bose."],
-["Legacy","Rash Behari Bose died in Japan in 1945. He is remembered for his international efforts for Indian independence."]]},
-{title:"Ratan Tata",cat:"People",emoji:"🏢",summary:"An Indian business leader and philanthropist.",sections:[
-["Early life","Ratan Naval Tata was born in Bombay, now Mumbai, on 28 December 1937. He studied architecture and structural engineering at Cornell University."],
-["Business leadership","He became chairman of Tata Sons in 1991. Tata companies expanded internationally during his leadership, including through major acquisitions."],
-["Innovation","The Tata Nano was developed as an effort to make car ownership more affordable. Tata also supported technology and manufacturing."],
-["Giving back","Tata-linked charitable trusts supported education, health, scientific research and community development."],
-["Legacy","Ratan Tata died in Mumbai on 9 October 2024. He is remembered for his business leadership and philanthropy."]]},
-{title:"Albert Einstein",cat:"Science",emoji:"🧠",summary:"A physicist whose theory of relativity transformed modern physics.",sections:[
-["Early life","Albert Einstein was born in Ulm, Germany, in 1879. He developed a strong interest in mathematics and the natural world."],
-["Scientific breakthroughs","In 1905, Einstein published influential scientific papers. His work on the photoelectric effect helped develop quantum theory, and his theory of relativity changed physics."],
-["E = mc²","This famous equation expresses a relationship between mass and energy."],
-["Later life","Einstein received the 1921 Nobel Prize in Physics for his explanation of the photoelectric effect. He later settled in the United States."],
-["Legacy","Einstein died in 1955. His work continues to influence physics and astronomy."]]},
-{title:"Planet Earth",cat:"Science",emoji:"🌎",summary:"Our home planet, with oceans, an atmosphere and diverse life.",sections:[
-["Our planet","Earth is the third planet from the Sun. It formed about 4.54 billion years ago and is the only planet currently known to support life."],
-["Land, oceans and air","Most of Earth's surface is covered by water. Its atmosphere contains mostly nitrogen and oxygen."],
-["Inside Earth","Earth has a crust, mantle and core. Heat inside the planet helps drive the movement of tectonic plates."],
-["Protecting our home","Pollution, habitat destruction and climate change affect ecosystems. Conserving resources and protecting habitats can help."]]},
-{title:"The Game of Football",cat:"Sports",emoji:"⚽",summary:"A global team sport played by millions.",sections:[
-["How it works","Association football is usually played by two teams of eleven players. The aim is to score by getting the ball into the opposing team's goal."],
-["The rules","A standard match lasts 90 minutes, divided into two halves. The referee enforces rules such as fouls, offside and penalties."],
-["A global game","Football is played at school, community and professional levels around the world. The FIFA World Cup is a major international competition."],
-["Skills and teamwork","Passing, dribbling, shooting, defending and communication are important skills. Practice and fair play help teams improve."]]},
-{title:"Subhas Chandra Bose",cat:"History",emoji:"🕊️",summary:"An important leader in India's independence movement.",sections:[
-["Early life","Subhas Chandra Bose was born on 23 January 1897 in Cuttack, in British India."],
-["Political leadership","Bose was elected president of the Indian National Congress in 1938 and 1939. He differed with other leaders over strategy."],
-["The Indian National Army","During the Second World War, Bose led the Indian National Army, seeking to end British rule."],
-["Legacy","Bose remains an influential independence leader. His wartime alliances and strategies continue to be studied by historians."]]},
-{title:"The Solar System",cat:"Science",emoji:"🪐",summary:"The Sun and the planets, moons and other objects held by its gravity.",sections:[
-["The Sun","The Sun is a star at the center of our solar system. Its gravity keeps the planets in orbit."],
-["Eight planets","From the Sun, the planets are Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus and Neptune."],
-["Other objects","The solar system also includes dwarf planets, asteroids, comets and moons."],
-["Exploration","Robotic spacecraft and telescopes help scientists study planets and distant regions of the solar system."]]}
-];
-const grid=document.getElementById("grid");
-const searchInput=document.getElementById("q");
-let active="All";
-function render(){
- const term=searchInput.value.trim().toLowerCase();
- const found=articles.filter(a=>(active==="All"||a.cat===active||(active==="India"&&/india|indian|bose|bhagat|tata/i.test(a.title)))&&(!term||(a.title+" "+a.summary+" "+a.sections.flat().join(" ")).toLowerCase().includes(term)));
- grid.innerHTML="";
- if(!found.length){grid.textContent="No matching original articles. Try Wikipedia search above.";return}
- found.forEach(a=>{
-  const c=document.createElement("article");c.className="card";
-  const e=document.createElement("div");e.className="emoji";e.textContent=a.emoji;
-  const h=document.createElement("h3");h.textContent=a.title;
-  const tag=document.createElement("p");tag.className="muted";tag.textContent=a.cat;
-  const p=document.createElement("p");p.textContent=a.summary;
-  const b=document.createElement("button");b.textContent="Read article →";b.onclick=()=>openArticle(a);
-  c.append(e,h,tag,p,b);grid.append(c);
- });
+const $=id=>document.getElementById(id);
+async function api(params){
+ const u=new URL("https://en.wikipedia.org/w/api.php");
+ Object.entries({...params,format:"json",origin:"*"}).forEach(([k,v])=>u.searchParams.set(k,v));
+ const r=await fetch(u);
+ if(!r.ok)throw Error("Network error");
+ return r.json();
 }
-function openArticle(a){
- document.getElementById("searchPanel").classList.add("hidden");
- document.getElementById("articlePanel").classList.remove("hidden");
- const box=document.getElementById("article");box.innerHTML="";
- const h=document.createElement("h2");h.textContent=a.emoji+" "+a.title;box.append(h);
- const m=document.createElement("p");m.className="muted";m.textContent="KnowUnion Original • "+a.cat;box.append(m);
- a.sections.forEach(s=>{const sh=document.createElement("h3");sh.textContent=s[0];const p=document.createElement("p");p.textContent=s[1];box.append(sh,p)});
- const link=document.createElement("a");link.href="https://en.wikipedia.org/wiki/"+encodeURIComponent(a.title.replace(/ /g,"_"));link.target="_blank";link.rel="noopener noreferrer";link.textContent="Read more on Wikipedia ↗";box.append(link);
- document.getElementById("articlePanel").scrollIntoView({behavior:"smooth"});
+function home(){
+ $("reader").style.display="none";
+ $("home").style.display="block";
+ window.scrollTo(0,0);
 }
-document.getElementById("back").onclick=()=>document.getElementById("articlePanel").classList.add("hidden");
-document.getElementById("categories").onclick=e=>{
- const b=e.target.closest("[data-cat]");if(!b)return;
- active=b.dataset.cat;
- document.querySelectorAll(".category").forEach(x=>x.classList.toggle("active",x===b));render();
-};
-searchInput.addEventListener("input",render);
-document.getElementById("searchForm").onsubmit=async e=>{
- e.preventDefault();
- const q=searchInput.value.trim();if(!q)return;
- document.getElementById("articlePanel").classList.add("hidden");
- const panel=document.getElementById("searchPanel");
- const results=document.getElementById("results");
- panel.classList.remove("hidden");results.textContent="Searching Wikipedia…";
- panel.scrollIntoView({behavior:"smooth"});
+async function search(q){
+ home();
+ $("results").replaceChildren();
+ $("status").textContent="Searching Wikipedia...";
  try{
-  const url="https://en.wikipedia.org/w/api.php?action=query&list=search&srsearch="+encodeURIComponent(q)+"&srlimit=8&format=json&origin=*";
-  const res=await fetch(url);if(!res.ok)throw Error();
-  const data=await res.json();results.innerHTML="";
-  const items=data.query.search;
-  if(!items.length){results.textContent="No results found.";return}
+  const d=await api({action:"query",list:"search",srsearch:q,srlimit:10});
+  const items=d.query.search;
+  $("status").textContent=items.length?"Choose an article:":"No results found. Try another topic.";
   items.forEach(item=>{
-   const div=document.createElement("div");div.className="result";
-   const h=document.createElement("h3");h.textContent=item.title;
-   const p=document.createElement("p");p.textContent=item.snippet.replace(/<[^>]*>/g,"").replace(/&quot;/g,'"').replace(/&amp;/g,"&");
-   const a=document.createElement("a");a.href="https://en.wikipedia.org/wiki/"+encodeURIComponent(item.title.replace(/ /g,"_"));a.target="_blank";a.rel="noopener noreferrer";a.textContent="Open full Wikipedia article ↗";
-   div.append(h,p,a);results.append(div);
+   const card=document.createElement("div");
+   card.className="card";
+   const h=document.createElement("h3");
+   h.textContent=item.title;
+   const p=document.createElement("p");
+   p.textContent=item.snippet.replace(/<[^>]*>/g,"");
+   const b=document.createElement("button");
+   b.className="read";
+   b.textContent="Read on KnowUnion →";
+   b.onclick=()=>openArticle(item.title);
+   card.append(h,p,b);
+   $("results").append(card);
   });
- }catch(err){
-  results.innerHTML="";
-  const p=document.createElement("p");p.textContent="Search could not load. Check your internet connection.";
-  const a=document.createElement("a");a.href="https://en.wikipedia.org/w/index.php?search="+encodeURIComponent(q);a.target="_blank";a.rel="noopener noreferrer";a.textContent="Search Wikipedia directly ↗";
-  results.append(p,a);
+ }catch(e){
+  $("status").textContent="Connection failed. Please check your internet.";
  }
+}
+async function openArticle(name){
+ $("home").style.display="none";
+ $("reader").style.display="block";
+ $("heading").textContent=name;
+ $("article").textContent="Loading article...";
+ $("original").removeAttribute("href");
+ window.scrollTo(0,0);
+ try{
+  const d=await api({action:"parse",page:name,prop:"text|displaytitle"});
+  if(!d.parse)throw Error("Not found");
+  $("heading").textContent=d.parse.displaytitle.replace(/<[^>]*>/g,"");
+  const box=document.createElement("div");
+  box.innerHTML=d.parse.text["*"];
+  box.querySelectorAll("script,style,iframe,form,object").forEach(x=>x.remove());
+  box.querySelectorAll("a").forEach(a=>{
+   const href=a.getAttribute("href")||"";
+   if(href.startsWith("/wiki/")){
+    let title=decodeURIComponent(href.slice(6)).replace(/_/g," ");
+    a.href="#";
+    a.onclick=e=>{e.preventDefault();openArticle(title)};
+   }else if(/^https?:\/\//i.test(href)){
+    a.target="_blank";
+    a.rel="noopener noreferrer";
+   }else a.removeAttribute("href");
+  });
+  box.querySelectorAll("img").forEach(img=>{
+   img.removeAttribute("srcset");
+   img.loading="lazy";
+  });
+  $("article").replaceChildren(box);
+  const info=await api({action:"query",prop:"info",inprop:"url",titles:name});
+  const page=Object.values(info.query.pages)[0];
+  $("original").href=page.fullurl||"https://en.wikipedia.org/wiki/"+encodeURIComponent(name);
+ }catch(e){
+  $("article").textContent="Sorry, this article could not load. Check your internet and try again.";
+  $("original").href="https://en.wikipedia.org/wiki/"+encodeURIComponent(name);
+ }
+}
+$("form").onsubmit=e=>{
+ e.preventDefault();
+ const q=$("q").value.trim();
+ if(q)search(q);
 };
-render();
+$("back").onclick=home;
 </script>
 </body>
 </html>
